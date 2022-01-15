@@ -1,4 +1,4 @@
-package com.challenge.arturoIsidro.app.examenes.models.entity;
+package com.challenge.arturoIsidro.commons.examenes.models.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
