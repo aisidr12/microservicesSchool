@@ -8,34 +8,39 @@
 		<version>2.6.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.challenge.arturoIsidro.app.commons</groupId>
-	<artifactId>commons-microservicios</artifactId>
+	<groupId>com.challenge.arturoIsidro.app.eureka</groupId>
+	<artifactId>microservicios-eureka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>commons-microservicios</name>
-	<description>Commos servicios</description>
+	<name>microservicios-eureka</name>
+	<description>Servicio de suscripciones email</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<spring-cloud.version>2021.0.0</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-<!--  Se quita pporque se utilizara como libreria este proyecto
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -44,5 +49,5 @@
 			</plugin>
 		</plugins>
 	</build>
--->
+
 </project>

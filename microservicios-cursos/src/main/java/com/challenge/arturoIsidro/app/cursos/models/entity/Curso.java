@@ -16,6 +16,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import com.challenge.arturoIsidro.commons.alumnos.models.entity.Alumno;
 import com.challenge.arturoIsidro.commons.examenes.models.entity.Examen;
@@ -34,6 +35,7 @@ public class Curso {
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<Examen> examenes;
 	
+	@NotEmpty
 	private String nombre;
 	
 	@Column(name="create_at")
