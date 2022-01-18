@@ -17,10 +17,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -28,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="examenes")
 public class Examen {
 
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -36,9 +40,14 @@ public class Examen {
 	@Size(min=4,max=30)
 	private String nombre;
 	
+	
 	@JsonIgnoreProperties(value="{examen}",allowSetters = true)
 	@OneToMany(mappedBy = "examen",fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Pregunta>preguntas;
+	
+	public Examen() {
+		this.preguntas = new ArrayList<Pregunta>();
+	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull
@@ -52,10 +61,11 @@ public class Examen {
 	public void prePersist() {
 		this.createAt = new Date();
 	}
+	
+	@Transient
+	private boolean respondido;
 
-	public Examen() {
-		this.preguntas = new ArrayList<Pregunta>();
-	}
+	
 	
 	public Long getId() {
 		return id;
@@ -87,7 +97,8 @@ public class Examen {
 
 	public void setPreguntas(List<Pregunta> preguntas) {
 		this.preguntas.clear();
-		preguntas.forEach(p -> this.addPregunta(p));
+	//	preguntas.forEach(p -> this.addPregunta(p));
+		preguntas.forEach(this::addPregunta);
 	}
 	
 	public void addPregunta(Pregunta pregunta) {
@@ -121,6 +132,15 @@ public class Examen {
 	public void setAsignatura(Asignatura asignatura) {
 		this.asignatura = asignatura;
 	}
+
+	public boolean isRespondido() {
+		return respondido;
+	}
+
+	public void setRespondido(boolean respondido) {
+		this.respondido = respondido;
+	}
+	
 	
 	
 	
