@@ -7,12 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="alumnos")
@@ -29,9 +32,17 @@ public class Alumno {
 	@Email
 	private String email;
 	
+	@Lob
+	@JsonIgnore
+	private byte[]foto;
+	
 	@Column(name="create_at")
 	@Temporal(TemporalType.TIME)	
 	private Date createAt;
+	
+	private Integer getFotoHashCode() {
+		return (this.foto!= null)?this.foto.hashCode():null;
+	}
 	
 	//Evento antes de persistir
 	//Evento que antes de que se guarde una entidad se genera la fecha
@@ -94,6 +105,15 @@ public class Alumno {
 		return this.id != null  && this.id.equals(a.getId());
 		
 	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+	
 	
 	
 }
