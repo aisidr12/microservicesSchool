@@ -24,16 +24,9 @@ import com.challenge.arturoIsidro.commons.examenes.models.entity.Examen;
 @Entity
 @Table(name="cursos")
 public class Curso {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Alumno>alumnos;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<Examen> examenes;
 	
 	@NotEmpty
 	private String nombre;
@@ -42,16 +35,22 @@ public class Curso {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
 	
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<Alumno> alumnos;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	private List<Examen> examenes;
+
 	@PrePersist
 	public void prePersist() {
-		this.createAt= new Date();
+		this.createAt = new Date();
 	}
 
 	public Curso() {
-		this.alumnos = new ArrayList<Alumno>();
-		this.examenes = new ArrayList<Examen>();
+		this.alumnos = new ArrayList<>();
+		this.examenes = new ArrayList<>();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -80,13 +79,14 @@ public class Curso {
 		return alumnos;
 	}
 
-	
-
-	public void addAlumno(Alumno alumno) {
-		this.alumnos.add(alumno);
-
+	public void setAlumnos(List<Alumno> alumnos) {
+		this.alumnos = alumnos;
 	}
 	
+	public void addAlumno(Alumno alumno) {
+		this.alumnos.add(alumno);
+	}
+
 	public void removeAlumno(Alumno alumno) {
 		this.alumnos.remove(alumno);
 	}
@@ -98,16 +98,13 @@ public class Curso {
 	public void setExamenes(List<Examen> examenes) {
 		this.examenes = examenes;
 	}
-	
+
 	public void addExamen(Examen examen) {
 		this.examenes.add(examen);
 	}
+	
 	public void removeExamen(Examen examen) {
 		this.examenes.remove(examen);
-	}
-
-	public void setAlumnos(List<Alumno> alumnos) {
-		this.alumnos = alumnos;
 	}
 	
 	

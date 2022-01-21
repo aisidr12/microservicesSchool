@@ -24,10 +24,13 @@ public class Alumno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotEmpty
 	private String nombre;
+	
 	@NotEmpty
 	private String apellido;
+	
 	@NotEmpty
 	@Email
 	private String email;
@@ -37,7 +40,7 @@ public class Alumno {
 	private byte[]foto;
 	
 	@Column(name="create_at")
-	@Temporal(TemporalType.TIME)	
+	@Temporal(TemporalType.TIMESTAMP)	
 	private Date createAt;
 	
 	private Integer getFotoHashCode() {

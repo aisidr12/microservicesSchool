@@ -1,7 +1,5 @@
 package com.challenge.arturoIsidro.app.examenes.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.challenge.arturoIsidro.app.commons.controllers.CommonController;
 import com.challenge.arturoIsidro.app.examenes.service.ExamenService;
 import com.challenge.arturoIsidro.commons.examenes.models.entity.Examen;
-import com.challenge.arturoIsidro.commons.examenes.models.entity.Pregunta;
 
 @RestController
 public class ExamenController extends CommonController<Examen,ExamenService>{
@@ -35,8 +32,17 @@ public class ExamenController extends CommonController<Examen,ExamenService>{
 		}
 		Examen examenDb = o.get();		
 		examenDb.setNombre(examen.getNombre());
+		
+		examenDb.getPreguntas()
+		.stream()
+		.filter(pdb -> !examen.getPreguntas().contains(pdb))
+		.forEach(examenDb::removePregunta);
+	
+		/*
+		 * 
+		 *
 		//Dentro del examen hay examenes - listas
-		List<Pregunta>eliminadas = new ArrayList();
+		List<Pregunta>eliminadas = new ArrayList<>();
 		examenDb.getPreguntas().forEach(pdb ->{
 			if(!examen.getPreguntas().contains(pdb)) {
 				//Con esto creamos una lista de preguntas a eliminar,
@@ -50,7 +56,7 @@ public class ExamenController extends CommonController<Examen,ExamenService>{
 			examenDb.removePregunta(p);
 		});
 		// ahora ponemos las nuevas preguntas.
-		
+		*/
 		examenDb.setPreguntas(examen.getPreguntas());
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(examenDb));
 	}
