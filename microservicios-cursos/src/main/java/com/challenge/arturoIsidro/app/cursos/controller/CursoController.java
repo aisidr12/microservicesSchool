@@ -2,6 +2,7 @@ package com.challenge.arturoIsidro.app.cursos.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -66,8 +67,23 @@ public class CursoController extends CommonController<Curso,CursoService> {
 	}
 	
 	@GetMapping("/alumno/{id}")
-	public ResponseEntity<?>buscarPorAlumnoId(@PathVariable Long id){
+	public ResponseEntity<?> buscarPorAlumnoId(@PathVariable Long id) {
 		Curso curso = service.findCursoByAlumno(id);
+		if (curso != null) {
+			//Examenes que ha respondido un alumno
+			List<Long> examenesId = (List<Long>) service.obtenerExamenesIdsConRespuestaAlumno(id);
+			List<Examen> examenes = curso
+					.getExamenes()
+					.stream()
+					.map(examen -> {
+				if (examenesId.contains(examen.getId())) {
+					examen.setRespondido(true);
+				}
+				// Siempre el map retorna el objeto modificado
+				return examen;
+			}).collect(Collectors.toList());
+			curso.setExamenes(examenes);
+		}
 		return ResponseEntity.ok(curso);
 	}
 	
