@@ -43,7 +43,7 @@ public class Alumno {
 	@Temporal(TemporalType.TIMESTAMP)	
 	private Date createAt;
 	
-	private Integer getFotoHashCode() {
+	public Integer getFotoHashCode() {
 		return (this.foto!= null)?this.foto.hashCode():null;
 	}
 	
