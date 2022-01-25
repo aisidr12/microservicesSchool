@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.challenge.arturoIsidro.app.commons.service.CommonService;
 
-@CrossOrigin(origins = "http://localhost:4200")
 public class CommonController<E,S extends CommonService<E>> {
 	
 	@Autowired
