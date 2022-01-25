@@ -8,7 +8,7 @@ import { Alumno } from '../models/alumno';
 })
 export class AlumnoService {
 
-  private baseEndpoint = 'htpp://localhost:8090/api/alumnos';
+  private baseEndpoint = 'http://localhost:8090/api/alumnos';
   private cabeceras: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
@@ -16,11 +16,11 @@ export class AlumnoService {
     return this.http.get<Alumno[]>(this.baseEndpoint);
   }
 
-  public listarPaginas(page:string,size:string):Observable<any>{
+  public listarPaginas(page: string, size: string): Observable<any> {
     const params = new HttpParams();
-    params.set('page',page)
-    params.set('size',size);
-    return this.http.get<any>(`${this.baseEndpoint}/pagina`,{params:params});
+    params.set('page', page)
+    params.set('size', size);
+    return this.http.get<any>(`${this.baseEndpoint}/pagina`, { params: params });
   }
 
 
