@@ -17,9 +17,9 @@ export class AlumnoService {
   }
 
   public listarPaginas(page: string, size: string): Observable<any> {
-    const params = new HttpParams();
-    params.set('page', page)
-    params.set('size', size);
+    const params = new HttpParams()
+    .set('page', page)
+    .set('size', size);
     return this.http.get<any>(`${this.baseEndpoint}/pagina`, { params: params });
   }
 

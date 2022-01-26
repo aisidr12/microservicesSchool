@@ -47,6 +47,16 @@
                 </tr>
             </tbody>
         </table>
-
+    
+        <mat-paginator
+        class = "float-left mx-2"
+        [length]="totalRegistros"
+        [pageSize]="totalPorPagina"
+        [pageIndex]="paginaActual"
+        [pageSizeOptions]="pageSizeOptions"
+        (page) = "paginar($event)"
+        showFirstLastButtons       
+      >        
+    </mat-paginator>
     </div>
 </div>
