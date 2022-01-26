@@ -25,7 +25,7 @@ export class AlumnoService {
 
 
   public ver(id: number): Observable<Alumno> {
-    return this.http.get<Alumno>(`${this.baseEndpoint}/{id}`);
+    return this.http.get<Alumno>(`${this.baseEndpoint}/${id}`);
   }
 
   public crear(alumno: Alumno): Observable<Alumno> {
