@@ -8,6 +8,7 @@
         <table class="table table-hover table-striped" *ngIf="lista?.length>0">
             <thead>
                 <th>Id</th>
+                <th>Imagen</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
@@ -19,6 +20,17 @@
                 <tr *ngFor="let alumno of lista">
                     <td>
                         {{alumno.id}}
+                    </td>
+                    <td>
+                        <img *ngIf="alumno.fotoHashCode"
+                        [src]="baseEndpoint +'/uploads/img/'+ alumno.id + '?fotoHashCode=' + alumno.fotoHashCode"
+                         class="img-thumbnail rounded"
+                         style="width: 64px; cursor: pointer">
+
+                         <img *ngIf="!alumno.fotoHashCode"
+                         [src]="'/assets/images/usuario.png'"
+                          class="img-thumbnail rounded"
+                          style="width: 64px; cursor: pointer">
                     </td>
                     <td>
                         {{alumno.nombre}}

@@ -3,6 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Alumno } from 'src/app/models/alumno';
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { CommonListComponent } from './common-list.component';
+import { BASE_ENDPOINT } from '../../config/app';
 
 
 
@@ -14,6 +15,8 @@ import { CommonListComponent } from './common-list.component';
 
 export class AlumnosComponent extends
      CommonListComponent<Alumno,AlumnoService>  {
+
+      baseEndpoint =  BASE_ENDPOINT + '/alumnos';
    
   constructor(service: AlumnoService) {
     super(service);

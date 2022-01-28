@@ -3,13 +3,14 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Alumno } from '../models/alumno';
 import { CommonService } from './common.service';
+import { BASE_ENDPOINT } from 'src/app/config/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnoService extends CommonService<Alumno>  {
 
-  protected baseEndpoint = 'http://localhost:8090/api/alumnos';
+  protected baseEndpoint = BASE_ENDPOINT + '/alumnos';
  
   constructor(http: HttpClient) {
     super(http);

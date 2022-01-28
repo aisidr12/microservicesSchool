@@ -17,9 +17,9 @@ export abstract class CommonFormComponent<E extends Generic,S extends CommonServ
   protected nombreModel : string;
 
   
-  constructor(private service: S ,
-              private router:Router,
-              private route: ActivatedRoute) { }
+  constructor(protected service: S ,
+              protected router:Router,
+              protected route: ActivatedRoute) { }
 
   ngOnInit(): void {   
     this.route.paramMap.subscribe(params =>{
