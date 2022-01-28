@@ -1,15 +1,14 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Directive } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Alumno } from '../models/alumno';
 import { Generic } from "../models/generic";
 
-
+@Directive()
 export abstract class CommonService<E extends Generic> {
 
   protected baseEndpoint :string;
   protected cabeceras: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-  constructor(private http: HttpClient) { }
+  constructor(protected http: HttpClient) { }
 
   public listar(): Observable<E[]> {
     return this.http.get<E[]>(this.baseEndpoint);
