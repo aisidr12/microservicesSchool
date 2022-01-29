@@ -1,11 +1,9 @@
 import { Component, Directive, OnInit } from '@angular/core';
-import { Alumno } from '../../models/alumno';
-import { HttpClient } from '@angular/common/http';
-import { AlumnoService } from '../../services/alumno.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2'
-import { CommonService } from '../../services/common.service';
+import { CommonService } from '../services/common.service';
 import { Generic } from 'src/app/models/generic';
+
 
 @Directive()
 export abstract class CommonFormComponent<E extends Generic,S extends CommonService<E>> implements OnInit {

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AlumnoService } from '../../services/alumno.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2'
-import { CommonFormComponent } from './common-form.component';
+import { CommonFormComponent } from '../common-form.component';
 
 
 @Component({
