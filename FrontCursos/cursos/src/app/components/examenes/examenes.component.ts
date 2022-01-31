@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { BASE_ENDPOINT } from 'src/app/config/app';
+import { Examen } from 'src/app/models/examen';
+import { ExamenService } from 'src/app/services/examen.service';
+import { CommonService } from '../../services/common.service';
+import { CommonListComponent } from '../common-list.component';
 
 @Component({
   selector: 'app-examenes',
   templateUrl: './examenes.component.html',
   styleUrls: ['./examenes.component.css']
 })
-export class ExamenesComponent implements OnInit {
+export class ExamenesComponent extends CommonListComponent<Examen,ExamenService>  {
 
-  constructor() { }
+  baseEndpoint =  BASE_ENDPOINT + '/examenes';
 
-  ngOnInit(): void {
-  }
+  constructor(service: ExamenService) {
+    super(service);
+    this.titulo = 'Listado de Examenes';
+    this.nombreModelo = Examen.name;
+  } 
 
 }
