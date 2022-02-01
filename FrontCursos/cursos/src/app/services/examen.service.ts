@@ -3,6 +3,8 @@ import { Curso } from '../models/curso';
 import { CommonService } from './common.service';
 import { HttpClient } from '@angular/common/http';
 import { Examen } from '../models/examen';
+import { Observable } from 'rxjs';
+import { Asignatura } from '../models/asignatura';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +17,7 @@ export class ExamenService extends CommonService<Examen> {
     super(http);
   }
 
+  public findAllAsignatura():Observable<Asignatura[]>{
+    return this.http.get<Asignatura[]>(`${this.baseEndpoint}/asignaturas`);
+  }
 }

@@ -11,16 +11,37 @@
                 <div class="alert alert-danger" *ngIf="error?.nombre">
                     {{error.nombre}}
                 </div>
-            </div>
+            </div>      
 
+            <div class="form-group">
+                <label for="asignaturaPadre">Asignatura Padre</label>
+                <select (change)="cargarHijos()"   [(ngModel)] = "model.asignaturaPadre" 
+                class="form-control" name="asignaturaPadre" id="asignaturaPadre">
+                <option [ngValue]="undefined">--- seleccionar una asignatura ---</option>
+                <option *ngFor="let asignatura of asignaturaPadre"
+                [ngValue]="asignatura">{{asignatura.nombre}}</option>                
+                </select>
+            </div>
+            <div class="alert alert-danger" *ngIf="error?.nombre">
+                {{error.asignaturaPadre}}
+            </div>
+            <div class="form-group">
+                <label for="asignaturaHija">Asignatura Hija</label>
+                <select [(ngModel)] = "model.asignaturaHija" 
+                class="form-control" name="asignaturaHija" id="asignaturaHija">
+                <option [ngValue]="undefined">--- seleccionar una asignatura ---</option>
+                <option *ngFor="let asignatura of asignaturaHija"
+                [ngValue]="asignatura">{{asignatura.nombre}}</option>                
+                </select>
+            </div>
+            <div class="alert alert-danger" *ngIf="error?.nombre">
+                {{error.asignaturaHija}}
+            </div>
             <button type="button" class="btn btn-primary" (click)="model.id?editar():crear()">
                 {{
                 model.id? 'Editar':'Crear'
                 }}
             </button>
-
-
-
         </form>
     </div>
 </div>
