@@ -48,9 +48,15 @@ public class Examen {
 		this.preguntas = new ArrayList<Pregunta>();
 	}
 
+	@JsonIgnoreProperties(value= {"hibernateLazyInitializer", "handler"})
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull
-	private Asignatura asignatura;
+	private Asignatura asignaturaPadre;
+	
+	@JsonIgnoreProperties(value= {"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@NotNull
+	private Asignatura asignaturaHija;
 
 	
 
@@ -122,12 +128,21 @@ public class Examen {
 
 	}
 
-	public Asignatura getAsignatura() {
-		return asignatura;
+
+	public Asignatura getAsignaturaPadre() {
+		return asignaturaPadre;
 	}
 
-	public void setAsignatura(Asignatura asignatura) {
-		this.asignatura = asignatura;
+	public void setAsignaturaPadre(Asignatura asignaturaPadre) {
+		this.asignaturaPadre = asignaturaPadre;
+	}
+
+	public Asignatura getAsignaturaHija() {
+		return asignaturaHija;
+	}
+
+	public void setAsignaturaHija(Asignatura asignaturaHija) {
+		this.asignaturaHija = asignaturaHija;
 	}
 
 	public boolean isRespondido() {

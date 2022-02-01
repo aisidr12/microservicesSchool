@@ -9,8 +9,10 @@
         <table class="table table-hover table-striped" *ngIf="lista?.length>0">
             <thead>
                 <th>Id</th>
-                <th>Nombre</th>               
+                <th>Nombre</th>            
+                <th>Asignatura</th>   
                 <th>Creado en</th>
+                <th>Preguntas </th>
                 <th>Editar</th>
                 <th>Eliminar</th>      
             </thead>
@@ -18,14 +20,19 @@
                 <tr *ngFor="let examen of lista">
                     <td>
                         {{examen.id}}
-                    </td>
-                    
+                    </td>                  
                     <td>
                         {{examen.nombre}}
-                    </td>                   
+                    </td>
+                    <td>
+                        {{examen.asignaturaPadre?.nombre}} --> {{examen.asignaturaHija?.nombre}}
+                    </td>                                    
                     <td>
                         {{examen.createAt | date: 'yyyy/MM/dd'}}
                     </td>
+                    <td>
+                        {{examen.preguntas.length}}
+                    </td>  
                     <td>
                         <button class="btn btn-secondary btn-sm"
                          [routerLink]="['/examenes/form',examen.id]">

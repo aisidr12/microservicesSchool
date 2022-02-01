@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="asignaturaPadre">Asignatura Padre</label>
                 <select (change)="cargarHijos()"   [(ngModel)] = "model.asignaturaPadre" 
-                class="form-control" name="asignaturaPadre" id="asignaturaPadre">
+                [compareWith]="compararAsignatura" class="form-control" name="asignaturaPadre" id="asignaturaPadre">
                 <option [ngValue]="undefined">--- seleccionar una asignatura ---</option>
                 <option *ngFor="let asignatura of asignaturaPadre"
                 [ngValue]="asignatura">{{asignatura.nombre}}</option>                
@@ -28,7 +28,7 @@
             <div class="form-group">
                 <label for="asignaturaHija">Asignatura Hija</label>
                 <select [(ngModel)] = "model.asignaturaHija" 
-                class="form-control" name="asignaturaHija" id="asignaturaHija">
+                [compareWith]="compararAsignatura" class="form-control" name="asignaturaHija" id="asignaturaHija">
                 <option [ngValue]="undefined">--- seleccionar una asignatura ---</option>
                 <option *ngFor="let asignatura of asignaturaHija"
                 [ngValue]="asignatura">{{asignatura.nombre}}</option>                
@@ -37,6 +37,30 @@
             <div class="alert alert-danger" *ngIf="error?.nombre">
                 {{error.asignaturaHija}}
             </div>
+                <button (click)="agregarPregunta()" class="btn btn-dark btn-lg my-3">
+                    Agregar Pregunta
+                </button>
+
+                <div class="form-group" *ngFor="let pregunta of model.preguntas;let i = index">
+                    <div class="row">
+                        <div class="col-sm-2">
+                           <label>Pregunta {{i+1}}:</label> 
+                        </div>
+                     
+                        <div class="col-sm-6">
+                               <input type="text" value="{{pregunta.texto}}" class="form-control" 
+                        (change)="asignarTexto(pregunta,$event)">
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-danger btn-sm" (click)="eliminarPregunta(pregunta)"></button>
+                        </div>
+                     
+                    </div>
+                  
+                </div>
+                <div class="alert alert-danger" *ngIf="errorPregunta">
+                    {{errorPregunta}}
+                </div>
             <button type="button" class="btn btn-primary" (click)="model.id?editar():crear()">
                 {{
                 model.id? 'Editar':'Crear'
