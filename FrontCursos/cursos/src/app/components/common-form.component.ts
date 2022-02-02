@@ -14,7 +14,11 @@ export abstract class CommonFormComponent<E extends Generic,S extends CommonServ
   protected redirect : string;
   protected nombreModel : string;
 
-  
+  //s : Hace referencia al servicio
+  //router :  hace que se redirija a una pantalla especifica
+  // activatedRoute : Con el route.paramMap.subscribe -> se trae el id de la url y este a diferencia
+  // del snapshot hace que se refresque el componente entero junto con la url.
+  // Mientras que con snapshot trae el id pero no refresca el componente
   constructor(protected service: S ,
               protected router:Router,
               protected route: ActivatedRoute) { }
