@@ -19,15 +19,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { AsignarAlumnosComponent } from './components/cursos/asignar-alumnos.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatDialogModule} from '@angular/material/dialog'
-import {MatExpansionModule} from '@angular/material/expansion'
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatExpansionModule } from '@angular/material/expansion'
 
 import { AsignarExamenesComponent } from './components/cursos/asignar-examenes.component';
 import { ResponderExamenComponent } from './components/alumnos/responder-examen.component';
 import { ResponderExamenModalComponent } from './components/alumnos/responder-examen-modal.component';
+import { VerExamenModalComponent } from './components/alumnos/ver-examen-modal.component';
 
 
 
@@ -45,9 +46,11 @@ import { ResponderExamenModalComponent } from './components/alumnos/responder-ex
     AsignarExamenesComponent,
     ResponderExamenComponent,
     ResponderExamenModalComponent,
+    VerExamenModalComponent,
 
   ],
-  entryComponents:[ResponderExamenComponent],
+  entryComponents: [ResponderExamenComponent,
+    VerExamenModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

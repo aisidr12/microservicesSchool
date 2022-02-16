@@ -3,6 +3,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Respuesta } from '../models/respuesta';
 import { BASE_ENDPOINT } from '../config/app';
 import { Observable } from 'rxjs';
+import { Examen } from '../models/examen';
+import { Alumno } from '../models/alumno';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +24,7 @@ export class RespuestaService {
      });
    }
 
+   obtenerRespuestasPorAlumnoPorExamen(alumno:Alumno, examen:Examen):Observable<Respuesta[]>{
+     return this.http.get<Respuesta[]>(`${this.baseEndpoint}/alumno/${alumno.id}/examen/${examen.id}`);
+   }
 }
