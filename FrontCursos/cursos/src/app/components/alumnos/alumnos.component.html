@@ -13,6 +13,7 @@
                 <th>Apellido</th>
                 <th>Email</th>
                 <th>Creado en</th>
+                <th>Examenes </th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </thead>
@@ -43,6 +44,11 @@
                     </td>
                     <td>
                         {{alumno.createAt | date: 'yyyy/MM/dd'}}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" [routerLink]="['/alumnos/responder-examen',alumno.id]">
+                            Responder
+                        </button>
                     </td>
                     <td>
                         <button class="btn btn-secondary btn-sm"

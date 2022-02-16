@@ -13,7 +13,7 @@
         <mat-form-field class="mx-3">
           <input matInput placeholder="Buscar alumnos" (keyup)="filtrar($event.target.value)">
         </mat-form-field>
-        <table mat-table [dataSource]="alumnosAsignar" class="mat-elevation-z8 mx-3">
+        <table mat-table [dataSource]="alumnosAsignar" class="mat-elevation-z8 m-3">
 
           <ng-container matColumnDef="seleccion">
             <th mat-header-cell *matHeaderCellDef>
@@ -50,7 +50,7 @@
           [disabled]="!seleccion.hasValue">Asignar</button>
       </mat-tab>
       <mat-tab label="Alumnos">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mx-3">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 m-3">
 
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Id </th>

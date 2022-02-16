@@ -1,0 +1,30 @@
+<p>responder-examen-modal works!</p>
+<h1 mat-dialog-title>Curso {{curso.nombre}}</h1>
+<div mat-dialog-content *ngFor="let pregunta of examen.preguntas">
+    <p>
+        Examen {{examen.nombre}}
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{pregunta.texto}}
+            </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+        
+        </mat-expansion-panel-header>
+        <p> primario texto </p>
+        <mat-form-field style ="width: 95%;">
+            <textarea matInput (change)="responder(pregunta,$event)" placeholder="Deja tu respuesta">
+            </textarea>
+        </mat-form-field>
+        </mat-expansion-panel>
+
+    </p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancelar()">
+        Cancelar
+    </button>
+    <button mat-button [mat-dialog-close]="respuestas">
+        Enviar
+    </button>
+</div>

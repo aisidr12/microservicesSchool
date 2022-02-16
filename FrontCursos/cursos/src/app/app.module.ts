@@ -22,8 +22,12 @@ import { AsignarAlumnosComponent } from './components/cursos/asignar-alumnos.com
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { AsignarExamenesComponent } from './components/cursos/asignar-examenes.component';
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatExpansionModule} from '@angular/material/expansion'
 
+import { AsignarExamenesComponent } from './components/cursos/asignar-examenes.component';
+import { ResponderExamenComponent } from './components/alumnos/responder-examen.component';
+import { ResponderExamenModalComponent } from './components/alumnos/responder-examen-modal.component';
 
 
 
@@ -39,8 +43,11 @@ import { AsignarExamenesComponent } from './components/cursos/asignar-examenes.c
     ExamenFormComponent,
     AsignarAlumnosComponent,
     AsignarExamenesComponent,
+    ResponderExamenComponent,
+    ResponderExamenModalComponent,
 
   ],
+  entryComponents:[ResponderExamenComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,7 +63,9 @@ import { AsignarExamenesComponent } from './components/cursos/asignar-examenes.c
     MatCardModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

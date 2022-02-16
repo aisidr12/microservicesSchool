@@ -14,26 +14,38 @@ export class CursoService extends CommonService<Curso>  {
 
   protected baseEndpoint = BASE_ENDPOINT + '/cursos';
 
-  constructor(http: HttpClient){
+  constructor(http: HttpClient) {
     super(http);
   }
 
-  asignarAlumnos(curso:Curso,alumnos: Alumno[]){
-    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/asignar-alumnos`,alumnos,{headers:this.cabeceras});
+  asignarAlumnos(curso: Curso, alumnos: Alumno[]) {
+    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/asignar-alumnos`, alumnos, { headers: this.cabeceras });
   }
 
-  eliminarAlumno(curso:Curso, alumno:Alumno):Observable<Curso>{
-    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/eliminar-alumno`,alumno,
-    {
-      headers:this.cabeceras
-    });
+  eliminarAlumno(curso: Curso, alumno: Alumno): Observable<Curso> {
+    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/eliminar-alumno`, alumno,
+      {
+        headers: this.cabeceras
+      });
   }
 
-  asignarExamenes(curso:Curso,examenes:Examen[]):Observable<Curso>{
-    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/asignar-examenes`,examenes
-    ,{
-      headers:this.cabeceras
-    });
+  asignarExamenes(curso: Curso, examenes: Examen[]): Observable<Curso> {
+    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/asignar-examenes`, examenes
+      , {
+        headers: this.cabeceras
+      });
+  }
+
+  eliminarExamen(curso: Curso, examen: Examen): Observable<Curso> {
+    return this.http.put<Curso>(`${this.baseEndpoint}/${curso.id}/eliminar-examen`,
+      examen,
+      {
+        headers: this.cabeceras
+      });
+  }
+
+  obtenerCursoPorAlumnoId(alumno:Alumno):Observable<Curso>{
+    return this.http.get<Curso>(`${this.baseEndpoint}/alumno/${alumno.id}`);
   }
 
 }
